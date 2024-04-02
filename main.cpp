@@ -1,15 +1,14 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
+#include "Data.cpp"
 #include <vector>
 #include <iomanip>
 #include <cstring>
 #include <ctime>
 #include <fstream>
-#include "data.cpp"
 
 using namespace std;
-
 
 vector<Data> dataList;
 
@@ -72,41 +71,41 @@ void PrintTableContent(vector<Data> data, int index) {
 	char* surName = data[index].getClient().surName;
 	char* phone = data[index].getClient().phoneNumber;
 
-	char brand_1[10]={"\0"};
-	char brand_2[10]={ "\0" };
-	char model_1[10]={ "\0" };
-	char model_2[10]={ "\0" };
-	char surName_1[10]={ "\0" };
-	char surName_2[10]={ "\0" };
+	char brand_1[10] = { "\0" };
+	char brand_2[10] = { "\0" };
+	char model_1[10] = { "\0" };
+	char model_2[10] = { "\0" };
+	char surName_1[10] = { "\0" };
+	char surName_2[10] = { "\0" };
 
-	char problem_1[25]={ "\0" };
-	char problem_2[25]={ "\0" };
-	char problem_3[25]={ "\0" };
-	char problem_4[25]={ "\0" };
-	char problem_5[25]={ "\0" };
+	char problem_1[25] = { "\0" };
+	char problem_2[25] = { "\0" };
+	char problem_3[25] = { "\0" };
+	char problem_4[25] = { "\0" };
+	char problem_5[25] = { "\0" };
 
-	char note_1[25]={ "\0" };
-	char note_2[25]={ "\0" };
-	char note_3[25]={ "\0" };
-	char note_4[25]={ "\0" };
-	char note_5[25]={ "\0" };
+	char note_1[25] = { "\0" };
+	char note_2[25] = { "\0" };
+	char note_3[25] = { "\0" };
+	char note_4[25] = { "\0" };
+	char note_5[25] = { "\0" };
 
 	for (int i = 0; i < 9; i++) {
 		brand_1[i] = brand[i];
 		model_1[i] = model[i];
 		surName_1[i] = surName[i];
 
-		brand_2[i] = brand[i+9];
-		model_2[i] = model[i+9];
-		surName_2[i] = surName[i+9];
+		brand_2[i] = brand[i + 9];
+		model_2[i] = model[i + 9];
+		surName_2[i] = surName[i + 9];
 	}
 
 	for (int i = 0; i < 24; i++) {
 		problem_1[i] = problem[i];
 		note_1[i] = note[i];
 
-		problem_2[i] = problem[i+24];
-		note_2[i] = note[i+24];
+		problem_2[i] = problem[i + 24];
+		note_2[i] = note[i + 24];
 
 		problem_3[i] = problem[i + 48];
 		note_3[i] = note[i + 48];
@@ -118,9 +117,9 @@ void PrintTableContent(vector<Data> data, int index) {
 		note_5[i] = note[i + 96];
 	}
 
-	cout << setiosflags(ios::left) << setw(3) << index << setw(1) << "|" << setw(9) << brand_1 << setw(1)<<"|" << setw(9) << model_1 << setw(1) << "|" << setw(12) << license << setw(1)<< "|" << setw(2) << day << "." << setw(2) << month << "." << setw(4) << year << setw(1) << "|" << setw(24) << problem_1 << setw(1) << "|" << setw(24)  << note_1 << setw(1) << "|" << setw(9) << surName_1 <<setw(1) << "|" << setw(12) << phone << endl;
+	cout << setiosflags(ios::left) << setw(3) << index << setw(1) << "|" << setw(9) << brand_1 << setw(1) << "|" << setw(9) << model_1 << setw(1) << "|" << setw(12) << license << setw(1) << "|" << setw(2) << day << "." << setw(2) << month << "." << setw(4) << year << setw(1) << "|" << setw(24) << problem_1 << setw(1) << "|" << setw(24) << note_1 << setw(1) << "|" << setw(9) << surName_1 << setw(1) << "|" << setw(12) << phone << endl;
 	if (brand_2[0] != '\0' or model_2[0] != '\0' or problem_2[0] != '\0' or note_2[0] != '\0' or surName_2[0] != '\0') {
-		cout << setiosflags(ios::left) << setw(3) << "" << setw(1) << "|" << setw(9) << brand_2 << setw(1) << "|" << setw(9) << model_2 << setw(1) << "|" << setw(12) << "" << setw(1) << "|" << setw(10) << "" << setw(1) << "|" << setw(24)  << problem_2 << setw(1) << "|" << setw(24) << note_2 << setw(1) << "|" << setw(9) << surName_2 << setw(1) << "|" << setw(12) << "" << endl;
+		cout << setiosflags(ios::left) << setw(3) << "" << setw(1) << "|" << setw(9) << brand_2 << setw(1) << "|" << setw(9) << model_2 << setw(1) << "|" << setw(12) << "" << setw(1) << "|" << setw(10) << "" << setw(1) << "|" << setw(24) << problem_2 << setw(1) << "|" << setw(24) << note_2 << setw(1) << "|" << setw(9) << surName_2 << setw(1) << "|" << setw(12) << "" << endl;
 	}
 
 	if (problem_3[0] != '\0' or note_3[0] != '\0') {
@@ -313,7 +312,7 @@ void Deleting() {
 	cout << "Введите ID удаляемой записи: \n";
 	cin >> index;
 
-	int select{-1};
+	int select{ -1 };
 	if (index >= dataList.size()) {
 		select = 0;
 		Deleting();
@@ -350,6 +349,8 @@ void Deleting() {
 void Edit() {
 	system("cls");
 	int index{};
+	cout << "Удаление:" << endl;
+	cout << "=========" << endl;
 	cout << "Введите ID изменяемой записи: \n";
 	cin >> index;
 
@@ -525,8 +526,8 @@ void SortingByDate() {
 		case 1:
 			for (int i = 0; i < dataTemp.size(); i++) {
 				for (int j = 0; j < dataTemp.size() - i - 1; j++) {
-					if ((dataTemp[j].getDate().year > dataTemp[j+1].getDate().year) || 
-						(dataTemp[j].getDate().year == dataTemp[j + 1].getDate().year && dataTemp[j].getDate().month > dataTemp[j + 1].getDate().month) || 
+					if ((dataTemp[j].getDate().year > dataTemp[j + 1].getDate().year) ||
+						(dataTemp[j].getDate().year == dataTemp[j + 1].getDate().year && dataTemp[j].getDate().month > dataTemp[j + 1].getDate().month) ||
 						(dataTemp[j].getDate().year == dataTemp[j + 1].getDate().year && dataTemp[j].getDate().month == dataTemp[j + 1].getDate().month && dataTemp[j].getDate().day > dataTemp[j + 1].getDate().day)) {
 						dataTempor = dataTemp[j];
 						dataTemp[j] = dataTemp[j + 1];
@@ -617,7 +618,7 @@ void SearchingByBrand() {
 
 		int size = dataList.size();
 		for (int i = 0; i < size; i++) {
-			if (strcmp(dataList[i].getCar().brand, brand) == 0) {
+			if (_stricmp(dataList[i].getCar().brand, brand) == 0) {
 				PrintTableContent(dataList, i);
 			}
 		}
@@ -647,7 +648,7 @@ void SearchingByLicense() {
 
 		int size = dataList.size();
 		for (int i = 0; i < size; i++) {
-			if (strcmp(dataList[i].getCar().licensePlate, license) == 0) {
+			if (_stricmp(dataList[i].getCar().licensePlate, license) == 0) {
 				PrintTableContent(dataList, i);
 			}
 		}
@@ -713,7 +714,7 @@ void SearchingBySurname() {
 
 		int size = dataList.size();
 		for (int i = 0; i < size; i++) {
-			if (strcmp(dataList[i].getClient().surName, surName) == 0) {
+			if (_stricmp(dataList[i].getClient().surName, surName) == 0) {
 				PrintTableContent(dataList, i);
 			}
 		}
